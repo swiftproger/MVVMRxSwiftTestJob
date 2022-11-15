@@ -18,12 +18,15 @@ class RootViewController: UIViewController {
     }
     
     private func logined() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1)) {
-            if self.isLogined {
-                let controller = LoginViewController()
-                controller.modalPresentationStyle = .fullScreen
-                self.present(controller, animated: false, completion: nil)
-            }
+        if self.isLogined {
+            perform(#selector(showController), with: nil, afterDelay: 0.01)
         }
+    }
+    
+    @objc
+    private func showController() {
+        let controller = LoginViewController()
+        controller.modalPresentationStyle = .fullScreen
+        self.present(controller, animated: false, completion: nil)
     }
 }
