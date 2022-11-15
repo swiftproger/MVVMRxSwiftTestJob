@@ -56,15 +56,71 @@
 		1FBB01A02923945800CC5F31 /* MVVMRxSwiftTestJob */ = {
 			isa = PBXGroup;
 			children = (
-				1FBB01A12923945800CC5F31 /* AppDelegate.swift */,
-				1FBB01A32923945800CC5F31 /* SceneDelegate.swift */,
+				1FBB01B52923AE4D00CC5F31 /* Module */,
+				1FBB01B72923AEA900CC5F31 /* Service */,
+				1FBB01B62923AE5500CC5F31 /* Support */,
 				1FBB01A52923945800CC5F31 /* ViewController.swift */,
 				1FBB01A72923945800CC5F31 /* Main.storyboard */,
-				1FBB01AA2923945900CC5F31 /* Assets.xcassets */,
-				1FBB01AC2923945900CC5F31 /* LaunchScreen.storyboard */,
-				1FBB01AF2923945900CC5F31 /* Info.plist */,
 			);
 			path = MVVMRxSwiftTestJob;
+			sourceTree = "<group>";
+		};
+		1FBB01B52923AE4D00CC5F31 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				1FBB01BA2923B0C500CC5F31 /* App */,
+				1FBB01B82923B0AF00CC5F31 /* Login */,
+				1FBB01B92923B0BA00CC5F31 /* RickAndMorty */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		1FBB01B62923AE5500CC5F31 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				1FBB01AF2923945900CC5F31 /* Info.plist */,
+				1FBB01AA2923945900CC5F31 /* Assets.xcassets */,
+				1FBB01A12923945800CC5F31 /* AppDelegate.swift */,
+				1FBB01A32923945800CC5F31 /* SceneDelegate.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		1FBB01B72923AEA900CC5F31 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1FBB01B82923B0AF00CC5F31 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1FBB01B92923B0BA00CC5F31 /* RickAndMorty */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RickAndMorty;
+			sourceTree = "<group>";
+		};
+		1FBB01BA2923B0C500CC5F31 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1FBB01BB2923B0CF00CC5F31 /* View */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1FBB01BB2923B0CF00CC5F31 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1FBB01AC2923945900CC5F31 /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,10 +344,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MVVMRxSwiftTestJob/Info.plist;
+				INFOPLIST_FILE = MVVMRxSwiftTestJob/Support/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MVVMRxSwift;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -317,10 +373,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MVVMRxSwiftTestJob/Info.plist;
+				INFOPLIST_FILE = MVVMRxSwiftTestJob/Support/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MVVMRxSwift;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
