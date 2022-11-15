@@ -12,10 +12,6 @@ class RootViewController: UIViewController {
     private var isLogined = true
     private var activityIndicator = UIActivityIndicatorView(style: .large)
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         logined()
@@ -23,7 +19,9 @@ class RootViewController: UIViewController {
     
     private func logined() {
         if isLogined {
-            print("Login Controller")
+            let controller = LoginViewController()
+            controller.modalPresentationStyle = .fullScreen
+            self.present(controller, animated: false, completion: nil)
         }
     }
 }
