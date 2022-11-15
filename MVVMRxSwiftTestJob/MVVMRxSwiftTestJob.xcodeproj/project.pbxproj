@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F00565E2923E2FB00A01D8D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F00565D2923E2FB00A01D8D /* RootViewController.swift */; };
 		1FBB01A22923945800CC5F31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB01A12923945800CC5F31 /* AppDelegate.swift */; };
 		1FBB01A42923945800CC5F31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB01A32923945800CC5F31 /* SceneDelegate.swift */; };
 		1FBB01A62923945800CC5F31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB01A52923945800CC5F31 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F00565D2923E2FB00A01D8D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		1FBB019E2923945800CC5F31 /* MVVMRxSwiftTestJob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMRxSwiftTestJob.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FBB01A12923945800CC5F31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FBB01A32923945800CC5F31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F00565B2923E2CE00A01D8D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F00565D2923E2FB00A01D8D /* RootViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		1FBB01952923945800CC5F31 = {
 			isa = PBXGroup;
 			children = (
@@ -68,7 +78,7 @@
 		1FBB01B52923AE4D00CC5F31 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				1FBB01BA2923B0C500CC5F31 /* App */,
+				1FBB01BA2923B0C500CC5F31 /* Root */,
 				1FBB01B82923B0AF00CC5F31 /* Login */,
 				1FBB01B92923B0BA00CC5F31 /* RickAndMorty */,
 			);
@@ -107,12 +117,13 @@
 			path = RickAndMorty;
 			sourceTree = "<group>";
 		};
-		1FBB01BA2923B0C500CC5F31 /* App */ = {
+		1FBB01BA2923B0C500CC5F31 /* Root */ = {
 			isa = PBXGroup;
 			children = (
 				1FBB01BB2923B0CF00CC5F31 /* View */,
+				1F00565B2923E2CE00A01D8D /* Controller */,
 			);
-			path = App;
+			path = Root;
 			sourceTree = "<group>";
 		};
 		1FBB01BB2923B0CF00CC5F31 /* View */ = {
@@ -196,6 +207,7 @@
 			files = (
 				1FBB01A62923945800CC5F31 /* ViewController.swift in Sources */,
 				1FBB01A22923945800CC5F31 /* AppDelegate.swift in Sources */,
+				1F00565E2923E2FB00A01D8D /* RootViewController.swift in Sources */,
 				1FBB01A42923945800CC5F31 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
