@@ -12,7 +12,7 @@ struct Info: Codable {
     private var pages: Int?
     private var next: String?
     
-    enum CodingKeys: CodingKey {
+    private enum CodingKeys: CodingKey {
         case count, pages, next
     }
     
