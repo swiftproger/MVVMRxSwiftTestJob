@@ -16,6 +16,8 @@ struct Info: Codable {
         case count, pages, next
     }
     
+    init() {}
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.count = try container.decodeIfPresent(Int.self, forKey: .count)
