@@ -8,5 +8,26 @@
 import Foundation
 
 struct CharactersResultRequest: Codable {
+    private var info: Info?
+    private var results: [Characters]?
     
+    private enum CodingKeys: CodingKey {
+        case info, results
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.info = try container.decodeIfPresent(Info.self, forKey: .info)
+        self.results = try container.decodeIfPresent([Characters].self, forKey: .results)
+    }
+    
+    public func getInfo() -> Info {
+        guard let info = info else { return Info() }
+        return info
+    }
+    
+    public func getCharacters() -> [Characters] {
+        guard let results = results else { return [] }
+        return results
+    }
 }
