@@ -6,7 +6,24 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-struct RickAndMortyViewModel {
+final class RickAndMortyViewModel {
+    var result = BehaviorSubject(value: CharactersResultRequest())
     
+    func fetchCharacters() {
+        guard let url = URL(string: "https://rickandmortyapi.com/api/character") else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let response = try JSONDecoder().decode(CharactersResultRequest.self, from: data)
+                self.result.on(.next(response))
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
 }
