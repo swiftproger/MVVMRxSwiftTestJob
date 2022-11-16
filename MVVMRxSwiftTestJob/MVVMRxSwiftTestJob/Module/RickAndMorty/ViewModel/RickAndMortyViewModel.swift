@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 final class RickAndMortyViewModel {
-    var result = BehaviorSubject(value: CharactersResultRequest())
+    var characters = BehaviorSubject(value: [Characters]())
     
     func fetchCharacters() {
         guard let url = URL(string: "https://rickandmortyapi.com/api/character") else { return }
@@ -19,7 +19,7 @@ final class RickAndMortyViewModel {
             guard let data = data else { return }
             do {
                 let response = try JSONDecoder().decode(CharactersResultRequest.self, from: data)
-                self.result.on(.next(response))
+                self.characters.on(.next(response.getCharacters()))
             } catch {
                 print(error.localizedDescription)
             }

@@ -33,10 +33,15 @@ final class RickAndMortyViewController: UIViewController {
     }
     
     private func getData() {
-        
+        viewModel.fetchCharacters()
     }
     
     private func bindTibleView() {
-        
+        tableView.rx.setDelegate(self).disposed(by: bag)
+        viewModel.characters.bind(to: tableView.rx.items(cellIdentifier: "RickAndMortyTableViewCell", cellType: RickAndMortyTableViewCell.self)) { (row, item, cell) in
+            cell.textLabel?.text = item.getName()
+        }.disposed(by: bag)
     }
 }
+
+extension RickAndMortyViewController: UITableViewDelegate {}
