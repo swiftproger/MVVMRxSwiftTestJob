@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
-    lazy var loginTextField: UITextField = {
+    private var bag = DisposeBag()
+    private let viewModel = LoginViewModel()
+    
+    private lazy var loginTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "login"
         textField.borderStyle = .roundedRect
@@ -18,7 +23,7 @@ class LoginViewController: UIViewController {
         return textField
     }()
     
-    lazy var passwordTextField: UITextField = {
+    private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "password"
         textField.borderStyle = .roundedRect
@@ -27,11 +32,11 @@ class LoginViewController: UIViewController {
         return textField
     }()
     
-    lazy var loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Login", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.white.withAlphaComponent(0.3), for: .highlighted)
+        button.setTitleColor(.white.withAlphaComponent(0.5), for: .highlighted)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 6
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -42,9 +47,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        createObserver()
     }
     
-    func setupView() {
+    private func setupView() {
         self.view.backgroundColor = .systemBackground
         self.view.addSubview(loginTextField)
         self.view.addSubview(passwordTextField)
@@ -64,7 +70,21 @@ class LoginViewController: UIViewController {
     }
     
     @objc
-    func loginButtonAction() {
+    private func loginButtonAction() {
         print("i am button")
+    }
+    
+    private func createObserver() {
+        loginTextField.rx.text.map({ $0 ?? "" })
+            .bind(to: viewModel.login)
+            .disposed(by: bag)
+        passwordTextField.rx.text.map({ $0 ?? "" })
+            .bind(to: viewModel.password)
+            .disposed(by: bag)
+        
+        viewModel.isValidInput.bind(to: loginButton.rx.isEnabled).disposed(by: bag)
+        viewModel.isValidInput.subscribe(onNext: { [weak self] isValid in
+            self?.loginButton.backgroundColor = isValid ? .systemBlue : .systemRed
+        }).disposed(by: bag)
     }
 }
