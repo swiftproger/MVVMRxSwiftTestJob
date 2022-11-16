@@ -71,7 +71,9 @@ final class LoginViewController: UIViewController {
     
     @objc
     private func loginButtonAction() {
-        print("i am button")
+        let controller = RickAndMortyViewController()
+        controller.modalPresentationStyle = .fullScreen
+        self.present(controller, animated: false, completion: nil)
     }
     
     private func createObserver() {

@@ -11,5 +11,6 @@ class RickAndMortyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("hello RickAndMortyViewController")
     }
 }
