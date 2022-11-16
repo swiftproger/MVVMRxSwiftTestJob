@@ -15,7 +15,8 @@ struct CharactersResultRequest: Codable {
         case info, results
     }
     
-    init(from decoder: Decoder) throws {
+    public init() {}
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.info = try container.decodeIfPresent(Info.self, forKey: .info)
         self.results = try container.decodeIfPresent([Characters].self, forKey: .results)
