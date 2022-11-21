@@ -18,6 +18,7 @@ struct Characters: Codable {
         id, name, image, url
     }
     
+    init() {}
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decodeIfPresent(Int.self, forKey: .id)
