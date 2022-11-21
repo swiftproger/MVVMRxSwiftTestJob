@@ -8,9 +8,11 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import UIKit
 
 final class RickAndMortyViewModel {
     var characters = BehaviorSubject(value: [Characters]())
+    var imageDownloaded = PublishRelay<(Int, UIImage?)>()
     
     func fetchCharacters() {
         guard let url = URL(string: "https://rickandmortyapi.com/api/character") else { return }
@@ -25,5 +27,21 @@ final class RickAndMortyViewModel {
             }
         }
         task.resume()
+    }
+    
+    func loadImageFromGivenItem(with index: Int) {
+        guard let url = try? characters.value()[index].getImage() else { return }
+
+        ReceiveImage.shared.downloadImage(urlString: url) { [weak self] image in
+            print("image downloaded: \(index): ", image?.description ?? "")
+            self?.imageDownloaded.accept((index, image))
+        }
+        
+ 
+    }
+    
+    func getCharacters(index: IndexPath) -> Characters {
+        guard let characters = try? characters.value()[index.row] else { return Characters() }
+        return characters
     }
 }

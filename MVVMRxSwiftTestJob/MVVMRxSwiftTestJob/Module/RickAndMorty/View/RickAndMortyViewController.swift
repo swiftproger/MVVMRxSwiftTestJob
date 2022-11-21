@@ -26,6 +26,7 @@ final class RickAndMortyViewController: UIViewController {
         setupUI()
         getData()
         bindTibleView()
+        bindImageLoader()
     }
     
     private func setupUI() {
@@ -41,6 +42,28 @@ final class RickAndMortyViewController: UIViewController {
         viewModel.characters.bind(to: tableView.rx.items(cellIdentifier: "RickAndMortyTableViewCell", cellType: RickAndMortyTableViewCell.self)) { (row, item, cell) in
             cell.textLabel?.text = item.getName()
         }.disposed(by: bag)
+        
+        tableView.rx
+            .willDisplayCell
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { cell, indexPath in
+                self.viewModel.loadImageFromGivenItem(with: indexPath.row)
+            })
+            .disposed(by: bag)
+    }
+    
+    private func bindImageLoader() {
+        viewModel.imageDownloaded
+            .observe(on: MainScheduler.instance)
+            .filter({ $0.1 != nil })
+            .map({ ($0.0, $0.1!) })
+            .subscribe(onNext: { [unowned self] index, image in
+                guard let cell = self.tableView.cellForRow(at: IndexPath(item: index, section: 0)) as? RickAndMortyTableViewCell else {
+                    return
+                }
+                cell.imageView?.image = image
+            })
+            .disposed(by: bag)
     }
 }
 
