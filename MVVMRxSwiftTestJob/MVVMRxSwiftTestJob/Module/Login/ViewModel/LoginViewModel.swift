@@ -16,13 +16,13 @@ class LoginViewModel {
     
     var isValidLogin: Observable<Bool> {
         login.map { login in
-            return login.count < 5 ? false : true
+            return login.count < 6 ? false : true
         }
     }
     
     var isValidPassword: Observable<Bool> {
         password.map { password in
-            return password.count < 5 ? false : true
+            return password.count < 6 ? false : true
         }
     }
     
