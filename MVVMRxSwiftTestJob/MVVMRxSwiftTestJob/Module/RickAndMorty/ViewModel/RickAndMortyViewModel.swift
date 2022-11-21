@@ -31,13 +31,9 @@ final class RickAndMortyViewModel {
     
     func loadImageFromGivenItem(with index: Int) {
         guard let url = try? characters.value()[index].getImage() else { return }
-
         ReceiveImage.shared.downloadImage(urlString: url) { [weak self] image in
-            print("image downloaded: \(index): ", image?.description ?? "")
             self?.imageDownloaded.accept((index, image))
         }
-        
- 
     }
     
     func getCharacters(index: IndexPath) -> Characters {

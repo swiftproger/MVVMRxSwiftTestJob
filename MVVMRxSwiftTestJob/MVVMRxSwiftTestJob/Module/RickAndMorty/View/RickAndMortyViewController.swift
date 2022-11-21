@@ -67,4 +67,9 @@ final class RickAndMortyViewController: UIViewController {
     }
 }
 
-extension RickAndMortyViewController: UITableViewDelegate {}
+extension RickAndMortyViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
+    }
+}
